@@ -1,2 +1,2 @@
-# Lab-a-Bank-SA
+# Labéa-Bank-SA
 Bank Timoun yo.
