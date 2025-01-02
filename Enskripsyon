@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ht">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enskripsyon</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            padding: 20px;
+        }
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input, label, button {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        input, button {
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align:center;">Enskripsyon</h1>
+    <form id="registrationForm">
+        <label for="nom">Non:</label>
+        <input type="text" id="nom" name="nom" required>
+
+        <label for="niyati">Niyati:</label>
+        <input type="text" id="niyati" name="niyati" required>
+
+        <label for="whatsapp">Nimewo WhatsApp:</label>
+        <input type="tel" id="whatsapp" name="whatsapp" required placeholder="E.g. 37919464">
+
+        <label for="kont">Non kont ou fè tranzaksyon an:</label>
+        <input type="text" id="kont" name="kont" required>
+
+        <label for="metew">Non moun ki metew la (si genyen):</label>
+        <input type="text" id="metew" name="metew">
+
+        <label for="foto">Foto tranzaksyon:</label>
+        <input type="file" id="foto" name="foto" accept="image/*" required>
+
+        <button type="button" onclick="submitForm()">Valide</button>
+    </form>
+
+    <script>
+        function submitForm() {
+            // Ranmase done yo
+            const nom = document.getElementById('nom').value;
+            const niyati = document.getElementById('niyati').value;
+            const whatsapp = document.getElementById('whatsapp').value;
+            const kont = document.getElementById('kont').value;
+            const metew = document.getElementById('metew').value;
+
+            // Kreye mesaj pou WhatsApp
+            const message = `Enskripsyon nouvo etidyan:\n\n` +
+                            `Non: ${nom}\n` +
+                            `Niyati: ${niyati}\n` +
+                            `Nimewo WhatsApp: ${whatsapp}\n` +
+                            `Non kont tranzaksyon: ${kont}\n` +
+                            `Moun ki met li: ${metew || 'N/A'}\n`;
+
+            // Ouvri WhatsApp ak mesaj la
+            window.open(`https://wa.me/50937919464?text=${encodeURIComponent(message)}`);
+
+            // Repons otomatik pou itilizatè a
+            setTimeout(() => {
+                window.open(`https://wa.me/509${whatsapp}?text=Ou%20valide%20pou%20ou%20suiv%20fòmasyon%20an.`);
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
